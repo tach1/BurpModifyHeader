@@ -9,35 +9,35 @@ JWT認証のアクセストークンが期限切れのとき、自動的に新�
 ## Usage
 1. メニューの [Setting]->[Extentions]->[Python environment]に jythonの jarファイルを指定します。
 
-![](https://github.com/tach1/BurpModifyHeader/assets/65728850/491d70af-210f-4bb4-83d9-7a164c25d135)
+![](https://github.com/tach1/BurpModifyHeader/assets/65728850/fa0cd0ae-a970-41ff-a577-e0f1bad20b7b)
 
 2. [Extension]->[Add]->[Extension details]に、この Burp Extensionを指定し、[Next]でロードします。
 
-![](https://github.com/tach1/BurpModifyHeader/assets/65728850/2ded7f7f-501e-4ee8-b7cd-e4e04f4faf00)
+![](https://github.com/tach1/BurpModifyHeader/assets/65728850/149b42b0-c4d2-41bc-aab0-6814fc758b5b)
 
 3. アクセストークンを取得するリクエストを送信し、Burpでキャプチャします。
    
-![](https://github.com/tach1/BurpModifyHeader/assets/65728850/dedf2f5c-ce64-4a70-ad9e-4752d986d49a)
+![](https://github.com/tach1/BurpModifyHeader/assets/65728850/9e13d81e-2049-435d-8825-654ebf8dddfd)
 
 4. [Settings]->[Sessions]->[Macros]->[Add]と進み、上でキャプチャしたリクエストを登録しておきます。細かな設定は不要です。
 
-![スクリーンショット 2023-06-22 200423](https://github.com/tach1/BurpModifyHeader/assets/65728850/619c1017-fe8b-45e6-bef8-d1b94f7fed58)
+![](https://github.com/tach1/BurpModifyHeader/assets/65728850/8cceb267-c6b2-4495-bcf9-0f395bf6c988)
 
 5. [Settings]->[Sessions]->[Session handling rules]->[Add]->[Rule actions]->[Add]と進み、[Check session is valid]を選択します。
 
-![](https://github.com/tach1/BurpModifyHeader/assets/65728850/b6111384-b9c0-4d45-a767-cbfcaaa2e027)
+![](https://github.com/tach1/BurpModifyHeader/assets/65728850/04f8d5f6-e30a-47dd-8a5a-0d944a102abf)
 
 6. ここでは、例として HTTPヘッダが 403を返したときアクセストークンが期限切れと見なします。
 
-![](https://github.com/tach1/BurpModifyHeader/assets/65728850/014d5ee7-a927-4a92-a087-bb1987a181f9)
+![](https://github.com/tach1/BurpModifyHeader/assets/65728850/845bd104-bc56-4ef9-bea2-c4287bec5199)
 
 7. [If session is invalid, perform the action below:]に、上で登録したマクロを選択します。また、[After running the macro, invoke a Burp extension action handler:]に、この Burp Extensionを選択します。
 
-![](https://github.com/tach1/BurpModifyHeader/assets/65728850/a83a8867-c79d-4246-bac6-731031ed2227)
+![](https://github.com/tach1/BurpModifyHeader/assets/65728850/239efb34-22e8-498b-b46f-a87510abccc2)
 
 8. 最後にターゲットとなるスコープを指定します。
 
-![](https://github.com/tach1/BurpModifyHeader/assets/65728850/d45bcf00-5df3-4c15-b487-3707b9666b09)
+![](https://github.com/tach1/BurpModifyHeader/assets/65728850/9eb266fc-2b84-4564-ba2b-4f4eac4bb4fc)
 
 9. アクセストークンを取得するための正規表現や、更新対象とするヘッダは、適宜 BurpModifyHeader.pyを編集してください。
 
